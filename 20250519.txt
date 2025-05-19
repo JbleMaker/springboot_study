@@ -1,0 +1,17 @@
+springboot = > 
+Lombok, SpringBoot DevTools, SpringWeb (종속성)
+
+Jakarta EE =>
+ tomcat - 10버전
+pom.xml => lombok dependency  1.18..38 >> 추가
+
+asList() vs List.of()
+
+종속성, 의존성
+
+maven, gradle
+=> https://velog.io/@leesomyoung/Maven%EA%B3%BC-Gradle%EC%9D%98-%EC%B0%A8%EC%9D%B4-%EB%B0%8F-%EB%B9%84%EA%B5%90
+
+java - groovy
+
+Arrays.toList(new Integer[]{1,2,3})
