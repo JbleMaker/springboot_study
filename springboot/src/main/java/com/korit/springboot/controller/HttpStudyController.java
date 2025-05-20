@@ -13,7 +13,7 @@ public class HttpStudyController {
 
     @GetMapping("/http")
 //    @ResponseBody   // data response
-    public String get(){
+    public String getStrig(){
         return "";
     }
     
@@ -21,6 +21,4 @@ public class HttpStudyController {
     public String getName(){
         return "김종보";
     }
-
-
 }

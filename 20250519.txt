@@ -15,3 +15,11 @@ maven, gradle
 java - groovy
 
 Arrays.toList(new Integer[]{1,2,3})
+
+Reflection
+
+postman
+
+dto
+
+bean
