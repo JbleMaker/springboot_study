@@ -23,3 +23,21 @@ postman
 dto
 
 bean
+
+
+// 0521
+- Component 종류
+- Bean 생성 및 등록
+- REST API, RESTful API
+- Database
+- ACID Transaction
+- Docker(dockerhub,
+-> ps : docker에서 실행중인 이미지컨테이너 정보
+-> search : mysql(pull, run)
+
+mysql > docker > data (folder create)
+:: gitBash
+-> docker-compose -f mysql-compose.yml up -d
+-> docker-compose -f mysql-compose.yml down
+-> docker ps -a
+
