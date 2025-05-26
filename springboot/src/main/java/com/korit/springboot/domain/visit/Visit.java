@@ -1,5 +1,6 @@
-package com.korit.springboot.mapper.dto;
+package com.korit.springboot.domain.visit;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,18 +8,19 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-/*
-*   Mybatis를 사용해서 데이터를 관리할 때 사용될 Entity 객체
-*   모든 Mapper의 DTO는 DB의 테이블 구조와 동일하게 작성한다.
-*
-*
-*/
-@Builder
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@Entity
+@Table(name = "visit_tb")
 public class Visit {
-    private Integer visitId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "visit_id")
+    private Integer id;
+
     private Integer patientId;
     private Integer doctorId;
     private Integer treatmentId;

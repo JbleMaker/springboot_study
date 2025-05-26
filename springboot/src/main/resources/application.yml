@@ -4,6 +4,14 @@ spring:
     url: jdbc:mysql://localhost:3307/clinic_db
     username: root
     password: 1q2w3e4r
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
 
 
 #classpath <- resources ?? ??

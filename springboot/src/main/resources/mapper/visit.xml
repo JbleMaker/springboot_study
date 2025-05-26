@@ -7,6 +7,6 @@
 
     <insert id="insert">
         insert into visit_tb
-        values(default, #{patientId}, #{doctorId}, #{treatmentId}, #{visitData}, #{fee})
+        values(default, #{patientId}, #{doctorId}, #{treatmentId}, #{visitDate}, #{fee})
     </insert>
 </mapper>

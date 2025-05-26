@@ -3,12 +3,47 @@ dependency(mvn)
 -> mysq-connector-java
 -> mybatis-spring-boot-starter
 
+http://localhost:8080/swagger-ui/index.html
+
+Mybatis(설정)
+com.korit.springboot > contorller > clinic > VisitController
+				  > dto > clinic > VisitRegisterDto
+				  > mapper > dto > Visit
+		     > resources > mapper > visit.xml
+				 > application.yml -> 변경
+
 
 순수 JDBC (추상화)-> 영속성 프레임워크
 -> SQL Mapper
 -> ORM
 
+
 mybatis, springData jpa
 
 플러그인 
 -> Mybatis
+
+
+Jpa(설정)
+application.yml
+-> jpa: hibernate: ddl-auto: none
+	show-sql: true
+	properties: hibernate: format_sql:true
+
+controller > clinic > Controller 
+domain > department, treatment, visit > Department, Repository
+
+Repository 
+-> DB와 통신
+-> JDBC >> DB와 통신을 위한 라이브러리
+
+Entity
+-> DB와 같은형태의 객체
+
+Jpa vs Mybatis => https://www.elancer.co.kr/blog/detail/231
+
+
+DoctorController, DoctorRepository, DoctorEntity, DoctoryRegisterDto, DoctorService
+DepatmentRepository, DepartmentEntiry
+
+

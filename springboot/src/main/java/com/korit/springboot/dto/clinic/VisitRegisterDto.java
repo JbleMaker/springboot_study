@@ -1,10 +1,9 @@
 package com.korit.springboot.dto.clinic;
 
-import com.korit.springboot.mapper.dto.Visit;
+import com.korit.springboot.domain.visit.Visit;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-
 /*
     "
         {
@@ -16,7 +15,6 @@ import java.time.LocalDateTime;
         }
     "
  */
-
 @Data
 public class VisitRegisterDto {
     private Integer patientId;
@@ -30,7 +28,7 @@ public class VisitRegisterDto {
                 .patientId(patientId)
                 .doctorId(doctorId)
                 .treatmentId(treatmentId)
-                .visitData(visitDate)
+                .visitDate(visitDate)
                 .fee(fee)
                 .build();
     }
