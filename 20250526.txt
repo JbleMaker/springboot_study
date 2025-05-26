@@ -1,0 +1,14 @@
+dependency(mvn)
+-> springdoc-openapi-starter-webmvc-ui
+-> mysq-connector-java
+-> mybatis-spring-boot-starter
+
+
+순수 JDBC (추상화)-> 영속성 프레임워크
+-> SQL Mapper
+-> ORM
+
+mybatis, springData jpa
+
+플러그인 
+-> Mybatis

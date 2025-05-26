@@ -36,6 +36,7 @@ bean
 -> search : mysql(pull, run)
 
 mysql > docker > data (folder create)
+
 :: gitBash
 -> docker-compose -f mysql-compose.yml up -d
 -> docker-compose -f mysql-compose.yml down
