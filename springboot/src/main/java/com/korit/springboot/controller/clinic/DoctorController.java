@@ -7,8 +7,10 @@ import lombok.Data;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @Data
+@RestController
 @AllArgsConstructor
 public class DoctorController {
     /*
@@ -17,9 +19,7 @@ public class DoctorController {
         departmentName:
     }
     * */
-
     private DoctorService doctorService;
-
 
     @PostMapping("/api/clinic/doctors")
     public ResponseEntity<?> register(@RequestBody DoctorRegisterDto dto){

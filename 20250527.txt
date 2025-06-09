@@ -1,0 +1,8 @@
+dto -> Entity ::
+::> 데이터 응답 dto객체를 Entity객체로 변환 후 DB에 insert
+
+Entity -> dto ::> Entity객체(DB)를 dto ::
+::> DB에서 가져올 때는 Entity객체를 dto객체로 변환 후 front로 전달.
+
+https://kihwan95.tistory.com/3
+

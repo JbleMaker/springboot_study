@@ -7,7 +7,6 @@ import com.korit.springboot.repository.DepartmentRepository;
 import com.korit.springboot.repository.DoctorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 @AllArgsConstructor
@@ -16,14 +15,12 @@ public class DoctorService {
     private DoctorRepository doctorRepository;
     private DepartmentRepository departmentRepository;
 
-
     public void register(DoctorRegisterDto dto) {
         departmentRepository.findByDepartmentName(dto.getDepartmentName())
                 .ifPresentOrElse(
                         departmentEntity -> {
                             //name을 찾았으면 save()
-                            DoctorEntity entity = dto.toEntity();
-                            entity.setDepartmentId(departmentEntity.getId());
+                            DoctorEntity entity = dto.toEntity(departmentEntity.getId());
                             doctorRepository.save(entity);
                         },
                         () ->{
@@ -31,12 +28,17 @@ public class DoctorService {
                             DepartmentEntity department = DepartmentEntity.builder()
                                     .departmentName(dto.getDepartmentName())
                                     .build();
-                            DepartmentEntity savedEntity = departmentRepository.save(department);
-                            DoctorEntity entity = dto.toEntity();
-                            entity.setDepartmentId(savedEntity.getId());
+                            DepartmentEntity departmentEntity = departmentRepository.save(department);
+                            DoctorEntity entity = dto.toEntity(departmentEntity.getId());
                             doctorRepository.save(entity);
-
                         }
-                        );
+        );
+//        departmentRepository.findByDepartmentName(dto.getDepartmentName())
+//                .ifPresentOrElse(
+//                        departmentEntity -> doctorRepository.save(dto.toEntity(departmentEntity.getId())),
+//                        () -> doctorRepository.save(dto.toEntity(departmentRepository.save(DepartmentEntity.builder()
+//                                    .departmentName(dto.getDepartmentName())
+//                                    .build()).getId()))
+//                );
     }
 }
