@@ -35,7 +35,7 @@ domain > department, treatment, visit > Department, Repository
 
 Repository 
 -> DB와 통신
--> JDBC >> DB와 통신을 위한 라이브러리
+-> JDBC >> DB와 통신
 
 Entity
 -> DB와 같은형태의 객체
