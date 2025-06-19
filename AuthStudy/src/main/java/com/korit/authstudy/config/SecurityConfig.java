@@ -1,17 +1,27 @@
 package com.korit.authstudy.config;
 
+import com.korit.authstudy.domain.entity.User;
+import com.korit.authstudy.filter.StudyFilter;
+import com.korit.authstudy.security.filter.JwtAuthenticationFilter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final StudyFilter studyFilter;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder () {
@@ -45,7 +55,16 @@ public class SecurityConfig {
         http.httpBasic(httpBasic -> httpBasic.disable());   //HTTP protocal 기본로그인 방식 비활성화
         http.logout(logout -> logout.disable()); // SSR 로그아웃 방식 비활성
 
-        http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());  // 모든 요청 허가
+//        http.addFilterBefore(studyFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
+
+        http.authorizeHttpRequests(auth -> {
+            auth.requestMatchers("/api/users","/api/users/signup", "/api/users/login", "/api/users/login/status").permitAll();
+            auth.anyRequest().authenticated(); //모든 요청 인증 필요
+//            auth.anyRequest().permitAll(); // 모든 요청 허가
+        });
+        
         // HttpSecurity 객체에 설정한 모든 정보를 기반으로 build하여 SecurityFilterChain 객체 생성
         return http.build();
     }
