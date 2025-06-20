@@ -57,10 +57,11 @@ public class SecurityConfig {
 
 //        http.addFilterBefore(studyFilter, UsernamePasswordAuthenticationFilter.class);
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        // 아래 경로를 제외하고 username authen에서 인증을 거친후 보낸다.
 
 
         http.authorizeHttpRequests(auth -> {
-            auth.requestMatchers("/api/users","/api/users/signup", "/api/users/login", "/api/users/login/status").permitAll();
+            auth.requestMatchers("/api/users","/api/users/signup", "/api/users/login", "/api/users/login/status","/api/users/principal").permitAll();
             auth.anyRequest().authenticated(); //모든 요청 인증 필요
 //            auth.anyRequest().permitAll(); // 모든 요청 허가
         });

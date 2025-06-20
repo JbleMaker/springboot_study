@@ -30,6 +30,7 @@ public class JwtUtil {
     }
 
     public boolean isBearer(String token) {
+        //bearer 토큰 있는지 확인
         if(token == null) {
             return false;
         }
@@ -43,7 +44,7 @@ public class JwtUtil {
         return bearerToken.replaceFirst("Bearer ", "");
     }
 
-    public Claims getClaims(String token) { // generateAccessToken를 원래 데이터로 풀어줌
+    public Claims getClaims(String token) throws JwtException { // generateAccessToken를 원래 데이터로 풀어줌
         JwtParserBuilder jwtParserBuilder = Jwts.parser();
         jwtParserBuilder.setSigningKey(KEY);
         JwtParser jwtParser = jwtParserBuilder.build();

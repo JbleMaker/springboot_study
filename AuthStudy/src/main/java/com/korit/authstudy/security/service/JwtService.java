@@ -15,6 +15,7 @@ public class JwtService {
     public LoginStatusDto validAccessToken(String bearerToken) {
 
         if(!jwtUtil.isBearer(bearerToken)){
+            // 해당 bearerToken인지 확인
             throw new BearerValidException();
         }
         String accessToken = jwtUtil.removeBearer(bearerToken); // accesstoken 문자열

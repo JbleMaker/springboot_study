@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/users")
 @RequiredArgsConstructor //final set
 public class UsersController {
+    // front => tomcat => [filter] => Controller
 
     private final UsersService usersService;
     private final JwtService jwtService;
@@ -39,5 +41,10 @@ public class UsersController {
 //        System.out.println(authorization);
 //        System.out.println(jwtService.validAccessToken(authorization));
         return ResponseEntity.ok(jwtService.validAccessToken(authorization));
+    }
+
+    @GetMapping("/principal")
+    public ResponseEntity<?> getPrincipalUser() {
+        return ResponseEntity.ok(SecurityContextHolder.getContext().getAuthentication());
     }
 }
